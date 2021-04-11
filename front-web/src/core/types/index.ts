@@ -1,4 +1,5 @@
 export type Perfil = {
+  name: string;
   public_repos: number;
   followers:number;
   following: number;

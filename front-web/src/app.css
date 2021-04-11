@@ -27,5 +27,19 @@ a:hover {
   background: #E6F7FF;
   border-radius: 16px;
   margin-top: 54px;
-  min-height: 230px;
+  padding-bottom: 30px;
+  min-height: 230px;  
+}
+
+.button {
+  background: #1890FF;
+  border-radius: 4px;
+  width: 101px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
 }

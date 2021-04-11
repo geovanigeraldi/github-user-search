@@ -3,8 +3,8 @@ import ContentLoader from 'react-content-loader';
 const ProductDescriptionLoader = () => (
   <ContentLoader
     speed={1}
-    width="100%"
-    height={180}
+    width="70%"
+    height={270}
     backgroundColor="#ecebeb"
     foregroundColor="#d6d2d2"
   >

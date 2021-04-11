@@ -6,17 +6,19 @@ import { Perfil } from '../../core/types';
 import './styles.css';
 
 const Search = () => {
-
+  const [isLoading, setIsLoading] = useState(false);
   const [busca, setBusca] = useState('');
   const [perfil, setPerfil] = useState<Perfil>({
-    public_repos: 0, followers: 0, following: 0,
+    name: '', public_repos: 0, followers: 0, following: 0,
     company: '', blog: '', location: '', created_at: '',
     avatar_url: '', html_url: ''
   });
 
   const handleRequestPerfil = () => {
+    setIsLoading(true);
     requestWeb({ usuario: busca })
-      .then(response => setPerfil(response.data));
+      .then(response => setPerfil(response.data))
+      .finally(() => { setIsLoading(false); });
   }
 
   const handleChance = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +27,7 @@ const Search = () => {
 
   return (
     <div className="search-container">
-      <div className="search-content card-base">
+      <div className="card-base">
         <h1 className="search-title">Encontre um perfil Github</h1>
         <input
           className="search-input"
@@ -36,31 +38,54 @@ const Search = () => {
         />
         <br />
         <button
+          className="button search-button"
           onClick={handleRequestPerfil}
         >
           Encontrar
         </button>
       </div>
-      
-      <Loaders />
-
-      {perfil && 
-      <div className="search-content card-base">
-        <div>
-          <img src={perfil.avatar_url} alt="" />
-          Repositorios Publicos {perfil.public_repos}
-          Seguidores {perfil.followers}
-          Seguindo {perfil.following}
-          Empresa {perfil.company}
-          Website/Blog {perfil.blog}
-          Localidade {perfil.location}
-          Membro desde {perfil.created_at}
-        </div>
-        <Link to={perfil.html_url} target="_blank">
-          Ver Perfil
-        </Link>
+      <div className="card-base">
+        {isLoading
+          ? <Loaders />
+          :
+          <div className="search-content-information">
+            <div>
+              <img
+                className="search-img"
+                src={perfil.avatar_url}
+                alt={perfil.name}
+              />
+              <Link
+                to={perfil.html_url}
+                target="_blank"
+              >
+                <button
+                  className="button search-button"
+                  onClick={handleRequestPerfil}
+                >
+                  Ver Perfil
+              </button>
+              </Link>
+            </div>
+            <div>
+              <div className="search-content-information">
+                <div className="search-content-top">Repositorios Publicos: {perfil.public_repos}</div>
+                <div className="search-content-top">Seguidores: {perfil.followers}</div>
+                <div className="search-content-top">Seguindo: {perfil.following}</div>
+              </div>
+              <div className="search-content-information">
+                <div className="search-content-group">
+                  <h4 className="search-text-information">Informações</h4>
+                  <div className="search-content"><strong>Empresa:</strong> {perfil.company}</div><br/>
+                  <div className="search-content"><strong>Website/Blog:</strong> {perfil.blog}</div><br/>
+                  <div className="search-content"><strong>Localidade:</strong> {perfil.location}</div><br/>
+                  <div className="search-content"><strong>Membro desde:</strong> {perfil.created_at}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
       </div>
-      }
     </div>
   );
 }
