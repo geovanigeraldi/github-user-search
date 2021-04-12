@@ -37,6 +37,7 @@
   color: #595959;
   padding: 5px 5px 5px 5px;
   margin-right: 10px;
+  font-size: 10px;
 }
 
 .search-title {
@@ -60,7 +61,7 @@
 
 .search-button {
   margin-top: 24px;
-  margin-left: 90px;
+  margin-left: 30px;
   margin-bottom: 40px;
 }
 
