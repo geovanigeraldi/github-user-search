@@ -61,6 +61,17 @@
 
 .search-button {
   margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.search-button-encontrar {
+  margin-top: 24px;
+  margin-left: 94px;
+  margin-bottom: 40px;
+}
+
+.search-button-verperfil {
+  margin-top: 24px;
   margin-left: 30px;
   margin-bottom: 40px;
 }

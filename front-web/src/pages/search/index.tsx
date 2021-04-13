@@ -47,7 +47,7 @@ const Search = () => {
         />
         <br />
         <button
-          className="button search-button"
+          className="button search-button search-button-encontrar"
           onClick={handleRequestPerfil}          
         >
           Encontrar
@@ -67,7 +67,7 @@ const Search = () => {
                   alt={perfil.name}
                 />
                   <button
-                    className="button search-button"
+                    className="button search-button search-button-verperfil"
                     onClick={handleVerPerfil}
                     value={perfil.html_url}
                   >

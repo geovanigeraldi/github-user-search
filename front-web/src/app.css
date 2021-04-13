@@ -42,4 +42,5 @@ a:hover {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
+  cursor: pointer;
 }
